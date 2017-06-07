@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta charset="UTF-8">
 <title>LINE連携前のページ</title>
 </head>
 <body>
@@ -9,6 +10,7 @@
   var PhmLine = (function() {
 
     var LINE_LOGIN_BASE_URL = 'https://line.brainpad-dms.jp:8443/v2/weblogin/index/'
+//    var LINE_LOGIN_BASE_URL = 'http://bpbc:8080/v2/weblogin/index/'
 
     function _doLogin(channelId, linkUrl){
       // フォームの生成
@@ -27,7 +29,7 @@
       // LINEログイン後の遷移先ページの設定
       var targetUrl = document.createElement('input');
       targetUrl.setAttribute('type', 'hidden');
-      targetUrl.setAttribute('name', 'lurl');
+      targetUrl.setAttribute('name', 'turl');
       targetUrl.setAttribute('value', linkUrl);
       form.appendChild(targetUrl);
       // submit
@@ -37,8 +39,6 @@
           doLogin: _doLogin
       }
   })();
-
-  }
   </script>
 
   <form name=f method=POST action="">
