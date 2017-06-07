@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>LINE連携前のページ</title>
+</head>
+<body>
+  <p>このページはLINE連携前のページです.以下のリンクをクリックすることでLINEアカウントと連携します.</p>
+
+  <script type="text/javascript">
+  var PhmLine = (function() {
+
+    var LINE_LOGIN_BASE_URL = 'https://line.brainpad-dms.jp:8443/v2/weblogin/index/'
+
+    function _doLogin(channelId, linkUrl){
+      // フォームの生成
+      var form = document.createElement("form");
+      form.setAttribute("action", LINE_LOGIN_BASE_URL + channelId);
+      form.setAttribute("method", "post");
+      form.style.display = "none";
+      document.body.appendChild(form);
+      // リクエスト元ページの設定
+      var srcUrl = document.createElement('input');
+      srcUrl.setAttribute('type', 'hidden');
+      srcUrl.setAttribute('name', 'surl'');
+      srcUrl.setAttribute('value', window.location.href);
+      form.appendChild(srcUrl);
+
+      // LINEログイン後の遷移先ページの設定
+      var targetUrl = document.createElement('input');
+      targetUrl.setAttribute('type', 'hidden');
+      targetUrl.setAttribute('name', 'lurl'');
+      targetUrl.setAttribute('value', linkUrl);
+      form.appendChild(targetUrl);
+      // submit
+      form.submit();
+    }
+    return {
+          doLogin: _doLogin
+      }
+  })();
+  }
+
+  }
+  </script>
+
+  <form name=f method=POST action="">
+    <input type=hidden name=x1 value=v1>
+  </form>
+
+  <a href="#" onclick="PhmLine.doLogin('1497084685',);">リンクから submit</a>
+
+</body>
+</html>
