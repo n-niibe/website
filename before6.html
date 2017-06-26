@@ -13,7 +13,19 @@
 
   <script type="text/javascript">
 
-  window.setTimeout(function(){PhmLine.doLogin('1517941067', 'http://www.brainpad.co.jp', 'testuid');}.bind(this), 15000);
+  window.setTimeout(function(){
+      var clickMe = document.getElementById("click_me");
+      if ( /*@cc_on ! @*/false) {
+        // IEの場合
+        clickMe.fireEvent("onclick"); //これでclickイベントが発火する
+      } else {
+        // それ以外の場合
+        var event = document.createEvent("MouseEvents"); // イベントオブジェクトを作成
+        event.initEvent("click", false, true); // イベントの内容を設定
+        clickMe.dispatchEvent(event); // イベントを発火させる
+      }
+
+  }.bind(this), 5000);
   </script>
 </body>
 </html>
