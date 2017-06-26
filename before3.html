@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LINE連携前のページ</title>
+<script type="text/javascript"
+  src="https://line.brainpad-dms.jp/v2/weblogin/js/phmweblogin.js"></script>
+</head>
+<body>
+  <p>このページはLINE連携前のページです.以下のリンクをクリックすることでLINEアカウントと連携します.</p>
+
+
+  <form name=f method=POST action="">
+    <input type=hidden name=x1 value=v1>
+  </form>
+
+
+  <script type="text/javascript">
+    var lbcStr = window.location.href;
+    var lbcRef = document.referrer;
+    var lbcidxStr = lbcStr.indexOf("lbc=1");
+    var lbcAllcookies = document.cookie;
+    var lbcCookie = lbcAllcookies.indexOf("_rt.uid=");
+    var lbcCookie2 = lbcAllcookies.indexOf("_lbc=");
+    var lbcurl = lbcStr.replace(/\?.*$/, "");
+
+    if (lbcCookie != -1) {
+      var start = lbcCookie + 8;
+      var end = lbcAllcookies.indexOf(";", start);
+      if (end == -1)
+        end = lbcAllcookies.length;
+      var lbcCookieValue = lbcAllcookies.substring(start, end);
+      lbcCookieValue = unescape(lbcCookieValue);
+    }
+    if (lbcCookie2 != -1) {
+      var start = lbcCookie2 + 5;
+      var end = lbcAllcookies.indexOf(";", start);
+      if (end == -1)
+        end = lbcAllcookies.length;
+      var lbcCookie2Value = lbcAllcookies.substring(start, end);
+      lbcCookie2Value = unescape(lbcCookie2Value);
+    }
+    if (lbcidxStr != -1 && lbcCookie2Value != 1) {
+
+      var expire_date = new Date();
+      expire_date.setTime(expire_date.getTime() + 5 * 60 * 1000);
+      var cookie_name = "_lbc";
+      var cookie_value = "1";
+      cookie_name = encodeURIComponent(cookie_name);
+      cookie_value = encodeURIComponent(cookie_value);
+      document.cookie = cookie_name + "=" + cookie_value + "; expires="
+          + expire_date.toGMTString();
+
+      PhmLine.doLogin('1517941067', lbcurl, lbcCookieValue);
+    }
+  </script>
+</body>
+</html>
