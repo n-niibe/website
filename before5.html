@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LINE連携前のページ</title>
+<script type="text/javascript"
+  src="https://line.brainpad-dms.jp/v2/weblogin/js/phmweblogin.js"></script>
+</head>
+<body>
+  <p>このページはLINE連携前のページです.以下のリンクをクリックすることでLINEアカウントと連携します.</p>
+
+  <a id="click_me" href="#"
+    onclick="PhmLine.doLogin('1517941067','http://www.brainpad.co.jp/','userid');">LINE
+    ログイン</a>
+
+  <script type="text/javascript">
+
+  alert('aaa');
+    var clickMe = document.getElementById("click_me");
+    if ( /*@cc_on ! @*/false) {
+      // IEの場合
+      clickMe.fireEvent("onclick"); //これでclickイベントが発火する
+    } else {
+      // それ以外の場合
+      var event = document.createEvent("MouseEvents"); // イベントオブジェクトを作成
+      event.initEvent("click", false, true); // イベントの内容を設定
+      clickMe.dispatchEvent(event); // イベントを発火させる
+    }
+  </script>
+</body>
+</html>
