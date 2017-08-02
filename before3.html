@@ -4,12 +4,47 @@
 <title>LINE連携前のページ</title>
 <script type="text/javascript"
   src="https://line.brainpad-dms.jp/v2/weblogin/js/phmweblogin.js"></script>
+<script type="text/javascript">
+    //Cookie取得関数
+	function getCookie( name )
+	{
+	    var result = null;
+
+	    var cookieName = name + '=';
+	    var allcookies = document.cookie;
+
+	    var position = allcookies.indexOf( cookieName );
+	    if( position != -1 )
+	    {
+	        var startIndex = position + cookieName.length;
+
+	        var endIndex = allcookies.indexOf( ';', startIndex );
+	        if( endIndex == -1 )
+	        {
+	            endIndex = allcookies.length;
+	        }
+
+	        result = decodeURIComponent(
+	            allcookies.substring( startIndex, endIndex ) );
+	    }
+
+	    return result;
+	}
+</script>
 </head>
 <body>
   <p>このページはLINE連携前のページです.以下のリンクをクリックすることでLINEアカウントと連携します.</p>
 
   <script type="text/javascript">
-      PhmLine.doLogin('1517941067', 'http://www.brainpad.co.jp', 'testuid');
+      if(null == getCookie("PhmLineTouch")){
+          //Cookieの存在有無を元に初訪か否かを判定しリダイレクトを制御
+          var expire = new Date();
+          expire.setTime( expire.getTime() + 1000 * 5 ); //5秒間有効なCookieを設定
+          document.cookie = 'PhmLineTouch=1; expires=' + expire.toUTCString();
+
+	      PhmLine.doLogin('1517941067', 'https://n-niibe.github.io/website/before3.html', 'testuid');
+	  } else {
+	  }
   </script>
 </body>
 </html>
