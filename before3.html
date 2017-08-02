@@ -36,15 +36,16 @@
   <p>このページはLINE連携前のページです.以下のリンクをクリックすることでLINEアカウントと連携します.</p>
 
   <script type="text/javascript">
-      if(null == getCookie("PhmLineTouch")){
+      var plt = getCookie("PhmLineTouch");
+      if(null == plt){
           //Cookieの存在有無を元に初訪か否かを判定しリダイレクトを制御
           var expire = new Date();
-          expire.setTime( expire.getTime() + 1000 * 5 ); //5秒間有効なCookieを設定
+          expire.setTime( expire.getTime() + (1000 * 10)); //10秒間有効なCookieを設定
           document.cookie = 'PhmLineTouch=1; expires=' + expire.toUTCString();
 
 	      PhmLine.doLogin('1517941067', 'https://n-niibe.github.io/website/before3.html', 'testuid');
 	  } else {
-	      alert('cookieあり');
+	      alert('cookieあり' + plt);
 	  }
   </script>
 </body>
