@@ -38,14 +38,14 @@
   <script type="text/javascript">
       var plt = getCookie("PhmLineTouch");
       if(null == plt){
-          //Cookieの存在有無を元に初訪か否かを判定しリダイレクトを制御
+          // Cookieの存在有無を元に初訪か否かを判定し自動コネクトを制御
           var expire = new Date();
           expire.setTime( expire.getTime() + (1000 * 10)); //10秒間有効なCookieを設定
           document.cookie = 'PhmLineTouch=1; expires=' + expire.toUTCString();
 
-	      PhmLine.doLogin('1517941067', 'https://n-niibe.github.io/website/before3.html', 'testuid');
+	      PhmLine.doLogin('1497084685', 'https://n-niibe.github.io/website/before3.html', 'testuid');
 	  } else {
-	      alert('cookieあり' + plt);
+	      // Cookieが存在しているため自動コネクトしない
 	  }
   </script>
 </body>
