@@ -3,7 +3,9 @@
 </head>
 <body>
 	<script type="text/javascript"
-	  src="https://line.brainpad-dms.jp:8443/v2/weblogin/js/phmweblogin.js">
+	  src="https://line.brainpad-dms.jp:8443/v2/weblogin/js/phmweblogin.js"></script>
+	<script type="text/javascript">
+
 	  var userId = '#USER_ID';
 	  var lbcTouched = PhmLine.getCookie('lbcTouch');
 	  
@@ -11,6 +13,7 @@
 	    PhmLine.setCookie('lbcTouch','1',5 * 60);
 	    PhmLine.doLogin('1497084685',location.href,userId);
 	  }
+	
 	</script>
 </body>
 </html>
