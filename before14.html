@@ -6,7 +6,7 @@
   src="https://line.brainpad-dms.jp/v2/weblogin/js/phmweblogin.js"></script>
 <script type="text/javascript">
 
-  var userId = null;
+  var userId = 'test';
   var lbcTouched = PhmLine.getCookie('lbcTouch');
   
   if(userId != '' && lbcTouched == null){
@@ -15,7 +15,7 @@
   }
 </script>
 
-  <a href="#" onclick="PhmLine.doLogin('1547950512','https://n-niibe.github.io/website/after.html',null);">LINE ログイン</a>
+  <a href="#" onclick="PhmLine.doLogin('1547950512','https://n-niibe.github.io/website/after.html','test');">LINE ログイン</a>
 
 </body>
 </html>
