@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<script type="text/javascript"
+  src="https://line.brainpad-dms.jp/v2/weblogin/js/phmweblogin.js"></script>
+<script type="text/javascript">
+
+  var userId = null;
+  var lbcTouched = PhmLine.getCookie('lbcTouch');
+  
+  if(userId != '' && lbcTouched == null){
+    PhmLine.setCookie('lbcTouch','1',5 * 60);
+    PhmLine.doLogin('1547950512',location.href,userId);
+  }
+</script>
+
+  <a href="#" onclick="PhmLine.doLogin('1547950512',location.href,null);">LINE ログイン</a>
+
+</body>
+</html>
