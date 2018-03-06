@@ -8,7 +8,7 @@
 <script type="text/javascript">
   function getUniqueStr(){
     var uuid = PhmLine.getCookie("uuid");
-    if(uuid){
+    if(uuid == null){
       var strong = 1000;
       uuid = new Date().getTime().toString(16)  + Math.floor(strong*Math.random()).toString(16);
       PhmLine.setCookie("uuid", uuid, 3600*365);
