@@ -11,7 +11,7 @@
     if(uuid){
       var strong = 1000;
       uuid = new Date().getTime().toString(16)  + Math.floor(strong*Math.random()).toString(16);
-      PhmLine.getCookie("uuid", uuid, 3600*365);
+      PhmLine.setCookie("uuid", uuid, 3600*365);
     }
     return uuid;
   }
