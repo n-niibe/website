@@ -1,0 +1,39 @@
+<html>
+<head>
+
+</head>
+<body>
+<script type="text/javascript"
+  src="https://line.brainpad-dms.jp/v2/weblogin/js/phmweblogin.js"></script>
+<script type="text/javascript">
+  function getUniqueStr(){
+    var uuid = PhmLine.getCookie("uuid");
+    if(uuid == null){
+      var strong = 1000;
+      uuid = new Date().getTime().toString(16)  + Math.floor(strong*Math.random()).toString(16);
+      PhmLine.setCookie("uuid", uuid, 3600*365);
+    }
+    return uuid;
+  }
+</script>
+
+  <p>
+  <a href="#" onclick="PhmLine.doLogin('1547950512','https://weban.jp',null);">企業IDなしでLINE ログイン</a><br>
+  必ず許諾画面が表示される</p>
+
+  <p>
+  <a href="#" onclick="var id = getUniqueStr();PhmLine.doLogin('1547950512','https://weban.jp',id);">LINE ログイン</a><br/>
+  あなたの企業ID：
+  <script type="text/javascript">
+    document.open();
+    document.write(getUniqueStr());
+    document.close();
+  </script><br/>
+  <ul>
+    <li>ブロック、または、未コネクトの場合許諾画面が表示される。</li>
+    <li>友達追加、ブロックの反映は5分のインターバルが必要。</li>
+    <li>企業IDはCookieを削除すると新しく振り直されます。</li>
+  </p>
+
+</body>
+</html>
